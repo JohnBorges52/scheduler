@@ -72,6 +72,7 @@ export default function useApplicationData() {
       .then(() => {
         const days = countSpots(state, appointments)
         setState({ ...state, days, appointments })
+
       })
   }
 
