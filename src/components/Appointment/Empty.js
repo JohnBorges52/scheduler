@@ -1,13 +1,8 @@
 import React from "react";
 
+// RENDER A EMPTY FORM WITH A + BUTTON TO CREATE APPOINTMENTS//
 export default function Empty(props) {
-
-
-
-
-
   return (
-
     <main className="appointment__add">
       <img
         className="appointment__add-button"
@@ -16,6 +11,5 @@ export default function Empty(props) {
         onClick={props.onAdd}
       />
     </main>
-
   );
 }

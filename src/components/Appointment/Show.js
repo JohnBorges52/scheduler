@@ -1,12 +1,9 @@
 import React from "react";
 
-
+// SHOW THE CONTAINER WITH THE INFORMATION OF THE SPECIFIC APPOINTMENT //
 export default function Show(props) {
 
-
-
   return (
-
     <main className="appointment__card appointment__card--show">
       <section className="appointment__card-left">
         <h2 className="text--regular">{props.student}</h2>
@@ -33,4 +30,4 @@ export default function Show(props) {
       </section>
     </main>
   );
-}
+};

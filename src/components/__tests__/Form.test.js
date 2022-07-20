@@ -1,11 +1,9 @@
 import React from "react";
 import { render, cleanup } from "@testing-library/react";
 import { fireEvent } from "@testing-library/react";
-
 import Form from "components/Appointment/Form";
 
 afterEach(cleanup);
-
 
 describe("Form", () => {
   const interviewers = [
@@ -15,7 +13,6 @@ describe("Form", () => {
       avatar: "https://i.imgur.com/LpaY82x.png"
     }
   ];
-
 
   it("renders without student name if not provided", () => {
     const { getByPlaceholderText } = render(
@@ -33,15 +30,11 @@ describe("Form", () => {
 
 
   it("validates that the student name is not blank", () => {
-    /* 1. Create the mock onSave function */
     const onSave = jest.fn()
 
-    /* 2. Render the Form with interviewers and the onSave mock function passed as an onSave prop, the student prop should be blank or undefined */
     const { getByText } = render(
       <Form interviewers={interviewers} interviewer={interviewers[0].id} onSave={onSave} />
     );
-
-    /* 3. Click the save button */
 
     fireEvent.click(getByText("Save"));
 
@@ -50,13 +43,13 @@ describe("Form", () => {
   });
 
   it("validates that the interviewer cannot be null", () => {
-    /* 1. Create the mock onSave function */
+
     const onSave = jest.fn()
-    /* 2. Render the Form with interviewers and the onSave mock function passed as an onSave prop, the interviewer prop should be null */
+
     const { getByText } = render(
       <Form interviewers={interviewers} interviewer={null} student={"Lydia Miller-Jones"} onSave={onSave} />
     );
-    /* 3. Click the save button */
+
     fireEvent.click(getByText("Save"));
 
     expect(getByText(/please select an interviewer/i)).toBeInTheDocument();
@@ -126,6 +119,4 @@ describe("Form", () => {
 
     expect(onCancel).toHaveBeenCalledTimes(1);
   });
-
-
 });

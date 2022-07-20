@@ -1,16 +1,12 @@
 import React from "react";
-import { fireEvent, getByDisplayValue } from "@testing-library/react";
-
-import { render, cleanup, waitForElement, getByText, prettyDOM, getAllByTestId, getByAltText, getByPlaceholderText, queryByText, queryByAltText, getAllByAltText } from "@testing-library/react";
-
+import { fireEvent } from "@testing-library/react";
+import { render, cleanup, waitForElement, getByText, getAllByTestId, getByAltText, getByPlaceholderText, queryByText, queryByAltText, } from "@testing-library/react";
 import Application from "components/Application";
 import axios from "axios";
 
-
-
-
 afterEach(cleanup);
 
+// RUN JEST TESTS WITH EACH ONE HAVING A DESCRIPTION OF THE TEST
 describe("Application", () => {
 
   it("defaults to Monday and changes the schedule when a new day is selected", () => {
@@ -47,12 +43,10 @@ describe("Application", () => {
       queryByText(day, "Monday")
     );
 
-
     expect(getByText(day, "no spots remaining")).toBeInTheDocument();
   });
 
   it("loads data, books an interview and reduces the spots remaining for Monday by 1", async () => {
-
 
     const { container } = render(<Application />);
 
@@ -101,16 +95,9 @@ describe("Application", () => {
 
     expect(getByText(appointment, "Saving")).toBeInTheDocument();
 
-    // 7. Wait until the element with the "Add" button is displayed.
     await waitForElement(() => getByText(appointment, "Lydia Miller-Jones"));
 
     expect(getByText(appointment, "Lydia Miller-Jones")).toBeInTheDocument();
-
-
-
-
-
-
 
   })
 
@@ -135,9 +122,7 @@ describe("Application", () => {
 
     expect(getByText(appointment, "Saving")).toBeInTheDocument();
 
-
     await waitForElement(() => getByText(appointment, "Could not save the apointment!"));
-
 
     expect(getByText(appointment, "Could not save the apointment!"));
 
@@ -146,8 +131,6 @@ describe("Application", () => {
     expect(getByAltText(appointment, "Add"));
 
   });
-
-
 
   it("shows the delete error when failing to delete an existing appointment", async () => {
     axios.delete.mockRejectedValueOnce();
@@ -177,8 +160,5 @@ describe("Application", () => {
     fireEvent.click(getByAltText(appointment, "Close"));
 
     expect(getByText(container, "Archie Cohen")).toBeInTheDocument();
-
-
   });
-
 });
