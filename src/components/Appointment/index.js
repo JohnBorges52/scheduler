@@ -60,7 +60,8 @@ export default function Appointment(props) {
   return (
 
 
-    <article className="appointment">
+    <article className="appointment" data-testid="appointment">
+
       <Header time={props.time} />
 
       {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
@@ -70,7 +71,7 @@ export default function Appointment(props) {
       }
 
       {mode === CREATE && <Form interviewers={props.interviewers} onCancel={back} onSave={save} />}
-      {mode === SAVING && <Status message={"SAVING"} />}
+      {mode === SAVING && <Status message={"Saving"} />}
       {mode === DELETING && <Status message={"DELETING"} />}
       {mode === CONFIRM && <Confirm onConfirm={destroy} onCancel={back} />}
       {mode === EDIT && < Form interviewers={props.interviewers} interviewer={props.interview.interviewer.id} student={props.interview.student} onCancel={back} onSave={save} />}
