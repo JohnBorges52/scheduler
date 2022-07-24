@@ -37,7 +37,6 @@ deploy:
 
 workflows:
   version: 2
-<<<<<<< HEAD
   test_and_deploy:
     jobs:
       - build:
@@ -50,8 +49,3 @@ workflows:
               ignore: production
           requires:
             - build
-=======
-  test:
-    jobs:
-      - build
->>>>>>> dbb7c6deb18f9a389bd562e0f76c7ac3cd65c5f4
