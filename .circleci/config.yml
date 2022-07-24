@@ -1,18 +1,17 @@
 version: 2
 jobs:
   build:
+    working_directory: ~/client
     docker:
       - image: circleci/node:10.16
 
-    working_directory: ~/client
-
     steps:
       - checkout
+      - run: npm install
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - v1-dependencies-
-      - run: npm install
       - save_cache:
           paths:
             - node_modules
@@ -20,7 +19,9 @@ jobs:
       - run: npm test
 
 workflows:
-  version: 2
-  test:
+  build_and_test:
     jobs:
       - build
+      -test:
+        requires:
+          -build
