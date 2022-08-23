@@ -7,7 +7,7 @@ This is a React Project that simulates a Scheduler of interviews.
 1. Install dependencies with `npm install`.
 2. Run the command npm start to start the server;
 
-_**OBS** This project use one API router to get the data. In order to set up the project, you need to clone [this repo](https://github.com/JohnBorges52/scheduler-api) and use npm start to install as well. More instructions are in the readme file._
+_**OBS** This project use an API to fetch the data. In order to set up the project, you need to clone [this repo](https://github.com/JohnBorges52/scheduler-api) and use npm start to install as well. More instructions are in the readme file._
 
 [The final project looks like this here.](https://john-scheduler.netlify.app/)
 
