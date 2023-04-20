@@ -29,9 +29,9 @@ export default function useApplicationData() {
   // FECTH INFORMATION FROM THE API //
   useEffect(() => {
     Promise.all([
-      axios.get('/api/days'),
-      axios.get('/api/appointments'),
-      axios.get('/api/interviewers')
+      axios.get('https://scheduller-api.onrender.com/api/days'),
+      axios.get('https://scheduller-api.onrender.com/api/appointments'),
+      axios.get('https://scheduller-api.onrender.com/api/interviewers')
     ]).then((all) => {
       setState(prev => ({ ...prev, days: all[0].data, appointments: all[1].data, interviewers: all[2].data }))
     })
@@ -50,7 +50,7 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
-    return axios.put(`/api/appointments/${id}`,
+    return axios.put(`https://scheduller-api.onrender.com/api/appointments/${id}`,
       appointment
     ).then(() => {
       const days = countSpots(state, appointments)
@@ -71,7 +71,7 @@ export default function useApplicationData() {
       [id]: appointment
     };
 
-    return axios.delete(`/api/appointments/${id}`)
+    return axios.delete(`https://scheduller-api.onrender.com/api/appointments/${id}`)
       .then(() => {
         const days = countSpots(state, appointments)
         setState({ ...state, days, appointments })
